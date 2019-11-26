@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block head_content %}
+<title>Measure graphics</title>
+{% endblock %}
+
+{% block container %}
+    <div class="row">
+      <div class="col-lg-12">
+        <canvas id="canvas" style="display: block; height: 416px; width: 832px;" width="1664" height="832" class="chartjs-render-monitor"></canvas>
+        <script>
+          var ctx = document.getElementById('canvas').getContext('2d');
+          var chart = new Chart(ctx, {
+              // The type of chart we want to create
+              type: 'line',
+              // The data for our dataset
+              data: {
+                  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                  datasets: [{
+                      label: 'Marcador tumoral',
+                      backgroundColor: 'rgb(255, 99, 132)',
+                      borderColor: 'rgb(255, 99, 132)',
+                      data: [3,3.2,3.3,3.4,3.6,4,4.3]
+                  }]
+              },
+
+              // Configuration options go here
+              options: {scales: {
+                  yAxes: [{
+                      ticks: {
+                          beginAtZero: true
+                      }
+                  }]
+              }}
+            });
+
+      </script>
+    </div>
+  </div>
+{% endblock %}
